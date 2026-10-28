@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dn6cmyim1noqb"]
+
+[ext_resource type="Script" uid="uid://cm3jksnkcv23i" path="res://scripts/level.gd" id="1_level"]
+[ext_resource type="Script" path="res://scripts/wall_renderer.gd" id="2_walls"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="3_hud"]
+
+[node name="Level1" type="Node2D" unique_id=1205766149]
+script = ExtResource("1_level")
+level_name = "DECK 1"
+
+[node name="Darkness" type="CanvasModulate" parent="." unique_id=1967179493]
+color = Color(0.3, 0.33, 0.42, 1)
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1059362606]
+
+[node name="Decals" type="Node2D" parent="." unique_id=1375682339]
+
+[node name="Walls" type="Node2D" parent="." unique_id=379847830]
+script = ExtResource("2_walls")
+
+[node name="Entities" type="Node2D" parent="." unique_id=1241239062]
+
+[node name="Effects" type="Node2D" parent="." unique_id=41095716]
+
+[node name="HUD" parent="." unique_id=799007159 instance=ExtResource("3_hud")]

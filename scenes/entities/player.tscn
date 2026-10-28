@@ -1,0 +1,58 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_player"]
+[ext_resource type="Texture2D" path="res://assets/Topdown Shooter/PNG/Soldier 1/soldier1_machine.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 15.0
+
+[sub_resource type="Gradient" id="Gradient_light"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.55, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_light"]
+gradient = SubResource("Gradient_light")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("1_player")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Light" type="PointLight2D" parent="."]
+color = Color(1, 0.96, 0.88, 1)
+energy = 0.85
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 2.6
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Body"]
+texture = ExtResource("2_tex")
+offset = Vector2(8.5, 0)
+
+[node name="Muzzle" type="Marker2D" parent="Body"]
+position = Vector2(36, 9)
+
+[node name="Flash" type="Polygon2D" parent="Body/Muzzle"]
+color = Color(1, 0.86, 0.35, 1)
+polygon = PackedVector2Array(0, -7, 9, -3, 22, 0, 9, 3, 0, 7, 4, 0)
+
+[node name="Light" type="PointLight2D" parent="Body/Muzzle"]
+color = Color(1, 0.8, 0.45, 1)
+energy = 1.4
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 0.8
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/Topdown Shooter/Tilesheet/tilesheet_complete_2X.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crate"]
+atlas = ExtResource("1_sheet")
+region = Rect2(2560, 512, 128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crate"]
+size = Vector2(54, 54)
+
+[node name="Crate" type="StaticBody2D" groups=["blockers"]]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_crate")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_crate")

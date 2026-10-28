@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/nest.gd" id="1_nest"]
+[ext_resource type="Texture2D" path="res://assets/Topdown Shooter/Tilesheet/tilesheet_complete_2X.png" id="2_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_splat"]
+atlas = ExtResource("2_sheet")
+region = Rect2(2816, 1408, 128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nest"]
+radius = 24.0
+
+[node name="Nest" type="StaticBody2D"]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_nest")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nest")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+show_behind_parent = true
+modulate = Color(0.55, 0.25, 0.7, 1)
+scale = Vector2(0.575, 0.575)
+texture = SubResource("AtlasTexture_splat")
