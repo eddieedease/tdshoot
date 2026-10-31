@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://710a8wli6ojl"
+path="res://.godot/imported/harsh_thud.wav-9b6d791f8ef25132645abe341bd0ce52.sample"
+
+[deps]
+
+source_file="res://assets/audio effects/Weapons/harsh_thud.wav"
+dest_files=["res://.godot/imported/harsh_thud.wav-9b6d791f8ef25132645abe341bd0ce52.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

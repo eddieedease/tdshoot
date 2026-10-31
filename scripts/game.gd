@@ -79,6 +79,7 @@ func restart_level() -> void:
 
 
 func go_to_menu() -> void:
+	Sfx.stop_ambience()
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_file(MENU_SCENE)

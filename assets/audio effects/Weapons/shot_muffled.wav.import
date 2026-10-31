@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwnvuiqi41qkn"
+path="res://.godot/imported/shot_muffled.wav-6f4a09754a7572bba461b2d40ff9107d.sample"
+
+[deps]
+
+source_file="res://assets/audio effects/Weapons/shot_muffled.wav"
+dest_files=["res://.godot/imported/shot_muffled.wav-6f4a09754a7572bba461b2d40ff9107d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

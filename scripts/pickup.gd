@@ -52,19 +52,23 @@ func _on_body_entered(body: Node) -> void:
 	match kind:
 		Kind.AMMO:
 			p.add_ammo(ammo_amount)
+			Sfx.play("pickup_ammo")
 			hud.show_message("+%d AMMO" % ammo_amount, 1.2)
 		Kind.HEALTH:
 			if not p.heal(health_amount):
 				return
+			Sfx.play("pickup_health")
 			hud.show_message("MEDKIT  +%d" % health_amount, 1.2)
 		Kind.KEY:
 			p.keys += 1
 			p.stats_changed.emit()
+			Sfx.play("pickup_key")
 			hud.show_message("KEY CARD ACQUIRED", 1.5)
 		Kind.CREDITS:
 			p.credits += credits_amount
 			Game.score += credits_amount
 			p.stats_changed.emit()
+			Sfx.play("pickup_credits")
 			hud.show_message("+%d CREDITS" % credits_amount, 1.2)
 	Fx.spark(p.level.effects, global_position, Color(0.6, 1, 0.9))
 	queue_free()

@@ -121,6 +121,8 @@ func _update_aim(move: Vector2) -> void:
 
 func _shoot() -> void:
 	if mag <= 0:
+		if reserve_ammo <= 0:
+			Sfx.play("empty")
 		start_reload()
 		return
 	mag -= 1
@@ -134,6 +136,7 @@ func _shoot() -> void:
 	bullet.position = global_position
 	level.effects.add_child(bullet)
 	bullet.travel_to(muzzle.global_position)
+	Sfx.play("shoot")
 
 	muzzle_flash.visible = true
 	muzzle_flash.scale = Vector2.ONE * randf_range(0.8, 1.2)
@@ -151,6 +154,7 @@ func start_reload() -> void:
 			level.hud.show_message("OUT OF AMMO", 1.0)
 		return
 	_reload_left = reload_time
+	Sfx.play("reload_start")
 	sprite.texture = TEX_RELOAD
 	sprite.offset = Vector2(3.5, 0)
 	stats_changed.emit()
@@ -163,6 +167,7 @@ func _finish_reload() -> void:
 	reserve_ammo -= taken
 	sprite.texture = TEX_MACHINE
 	sprite.offset = Vector2(8.5, 0)
+	Sfx.play("reload_done")
 	stats_changed.emit()
 
 
@@ -176,6 +181,7 @@ func take_damage(amount: int, _from_dir := Vector2.ZERO) -> void:
 	health = maxi(health - amount, 0)
 	_hurt_flash = 1.0
 	add_shake(6.0)
+	Sfx.play("player_hurt")
 	stats_changed.emit()
 	if health <= 0:
 		_die()
@@ -202,6 +208,7 @@ func add_shake(amount: float) -> void:
 
 func _die() -> void:
 	dead = true
+	Sfx.play("player_die")
 	velocity = Vector2.ZERO
 	collision_layer = 0
 	Fx.blood(level.decals, global_position, Color(0.55, 0.05, 0.05), 1.4)

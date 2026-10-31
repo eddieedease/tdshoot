@@ -35,6 +35,8 @@ func travel_to(target: Vector2) -> bool:
 	if collider.has_method("take_damage"):
 		collider.take_damage(damage, velocity.normalized())
 	var is_enemy := collider is Alien or collider is Nest
+	if not is_enemy and not collider.has_method("take_damage"):
+		Sfx.play_at("bullet_wall", hit.position)
 	Fx.spark(fx_parent if fx_parent else get_parent(), hit.position,
 		Color(0.55, 0.95, 0.3) if is_enemy else Color(1, 0.85, 0.4))
 	queue_free()

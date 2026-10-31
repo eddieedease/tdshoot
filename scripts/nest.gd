@@ -59,6 +59,7 @@ func _spawn() -> void:
 	alien.position = level.cell_center(options.pick_random())
 	alien.awake = true
 	level.entities.add_child(alien)
+	Sfx.play_at("nest_spawn", global_position)
 	_children.append(alien)
 
 
@@ -67,11 +68,14 @@ func take_damage(amount: int, _from_dir := Vector2.ZERO) -> void:
 		return
 	health -= amount
 	_hurt_flash = 1.0
+	Sfx.play_at("nest_hit", global_position)
 	if health <= 0:
 		_die()
 
 
 func _die() -> void:
+	Sfx.play_at("nest_die", global_position)
+	Sfx.play_at("explosion_tail", global_position)
 	Fx.explosion(level.effects, global_position, 90.0)
 	Fx.blood(level.decals, global_position, Color(0.4, 0.2, 0.5), 1.6)
 	level.set_walkable(level.world_to_cell(global_position), true)

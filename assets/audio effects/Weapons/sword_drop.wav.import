@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cs7h5iwxmcack"
+path="res://.godot/imported/sword_drop.wav-deef2f8b49a97e094fbd29af12df51d4.sample"
+
+[deps]
+
+source_file="res://assets/audio effects/Weapons/sword_drop.wav"
+dest_files=["res://.godot/imported/sword_drop.wav-deef2f8b49a97e094fbd29af12df51d4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

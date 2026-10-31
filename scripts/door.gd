@@ -83,11 +83,14 @@ func _on_body_entered(body: Node) -> void:
 		open()
 	elif _locked_msg_cooldown <= 0.0:
 		_locked_msg_cooldown = 2.0
+		Sfx.play_at("door_locked", global_position + _size() * 0.5)
 		level.hud.show_message("DOOR LOCKED  —  KEY REQUIRED", 2.0)
 
 
 func open() -> void:
 	opening = true
+	Sfx.play_at("door_unlock", global_position + _size() * 0.5)
+	Sfx.play_at("door_open", global_position + _size() * 0.5)
 	shape.set_deferred("disabled", true)
 	for c in get_blocked_cells():
 		level.set_walkable(c, true)

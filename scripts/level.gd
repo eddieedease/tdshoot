@@ -68,6 +68,7 @@ func _ready() -> void:
 	player.set_camera_limits(bounds)
 	_recompute_flow()
 	hud.setup(self)
+	Sfx.start_ambience()
 	hud.show_message(level_name + "  —  " + intro_text, 4.0)
 
 
@@ -214,6 +215,7 @@ func on_exit_reached() -> void:
 	finished = true
 	player.frozen = true
 	Game.score += player.health * 10
+	Sfx.play("level_complete")
 	hud.show_level_complete()
 
 

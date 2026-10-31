@@ -56,6 +56,7 @@ func _physics_process(delta: float) -> void:
 			if dist < attack_range + 15.0 and _attack_cooldown <= 0.0:
 				_attack_cooldown = attack_interval
 				player.take_damage(damage, to_player.normalized())
+				Sfx.play_at("alien_attack", global_position)
 		else:
 			desired = _idle_wander(delta)
 	else:
@@ -99,12 +100,14 @@ func take_damage(amount: int, from_dir := Vector2.ZERO) -> void:
 	awake = true
 	_hurt_flash = 1.0
 	velocity += from_dir * 160.0
+	Sfx.play_at("alien_hit", global_position)
 	Fx.blood(level.decals, global_position, Color(0.35, 0.75, 0.15, 0.8), 0.45)
 	if health <= 0:
 		_die()
 
 
 func _die() -> void:
+	Sfx.play_at("alien_die", global_position)
 	Fx.blood(level.decals, global_position, Color(0.3, 0.7, 0.12), 1.1)
 	level.on_alien_killed(self)
 	# Small chance to drop something useful.

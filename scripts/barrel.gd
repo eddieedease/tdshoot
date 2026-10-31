@@ -34,6 +34,8 @@ func take_damage(amount: int, _from_dir := Vector2.ZERO) -> void:
 func _explode() -> void:
 	var pos := global_position
 	Fx.explosion(level.effects, pos, blast_radius)
+	Sfx.play_at("explosion", pos)
+	Sfx.play_at("explosion_tail", pos)
 	Fx.blood(level.decals, pos, Color(0.05, 0.05, 0.05, 0.85), 2.2)
 	level.shake(12.0)
 	for group in ["aliens", "nests"]:
