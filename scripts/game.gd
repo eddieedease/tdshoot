@@ -90,7 +90,11 @@ func go_to_menu() -> void:
 func tile_texture(col: int, row: int, size := Vector2i.ONE) -> AtlasTexture:
 	var tex := AtlasTexture.new()
 	tex.atlas = load(TILESHEET_2X)
-	tex.region = Rect2(col * 128, row * 128, size.x * 128, size.y * 128)
+	# Inset 2px: the sheet's tile borders contain slivers of the neighbouring tiles.
+	tex.region = Rect2(col * 128 + 2, row * 128 + 2, size.x * 128 - 4, size.y * 128 - 4)
+	# Tiles touch each other in the sheet; without this, filtering bleeds in a
+	# faint outline from neighbouring tiles when the sprite is rotated or scaled.
+	tex.filter_clip = true
 	return tex
 
 

@@ -5,7 +5,8 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_barrel"]
 atlas = ExtResource("2_sheet")
-region = Rect2(2304, 1408, 128, 128)
+region = Rect2(2306, 1410, 124, 124)
+filter_clip = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_barrel"]
 radius = 20.0

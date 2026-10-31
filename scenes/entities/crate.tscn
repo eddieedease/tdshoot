@@ -4,7 +4,8 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crate"]
 atlas = ExtResource("1_sheet")
-region = Rect2(2560, 512, 128, 128)
+region = Rect2(2562, 514, 124, 124)
+filter_clip = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crate"]
 size = Vector2(54, 54)
